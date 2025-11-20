@@ -1,0 +1,141 @@
+/*LES COULEURS*/
+:root {
+  --cacao-brun: #4E342E;
+  --cafe-brun: #6D4C41;
+  --beige-creme: #F5F5DC;
+  --vert-feuillage: #388E3C;
+  --or-dore: #D4AF37;
+  --blanc-casse: #FAF9F6;
+  --or-dore-claire: #e1b00d;
+}
+/*le style des boutons*/
+button {
+    background-color: var(--cafe-brun);
+    color: var(--beige-creme);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+button:hover {
+    background-color: var(--cacao-brun);
+}
+button:active {
+    background-color: var(--vert-feuillage);
+}
+/*le style des liens*/
+a {
+    color: var(--or-dore);
+    text-decoration: none;
+}
+a:hover {
+    color: var(--cacao-brun);
+}
+
+body {
+    background-color: #F5F5DC;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+/* LE STYLE DU MENU */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding-right: 2.5rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #F5F5DC;
+  font-size: 1.2rem;
+}
+
+nav ul li.active a {
+  font-weight: bold;
+  color: var(--or-dore-claire);
+  border-bottom: 4px solid var(--cacao-brun);
+}
+.menu{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color:#6D4C41;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  
+}
+.logo {
+  height: 50px;
+  width: auto;
+  vertical-align: middle;
+}
+/*Style du pied de page*/
+footer.footer {
+    background-color: #6D4C41;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+footer.footer p {
+    margin: 0;
+    color: #F5F5DC;
+    font-size: 14px;
+    text-align: center;
+}
+/* Bouton hamburger */
+.menu button.menu-toggle {
+  display:none; /* caché par défaut (desktop) */
+  background-color: var(--cafe-brun);
+  color: var(--beige-creme);
+  border: 1px solid var(--or-dore);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-right: 25px;
+}
+/*reponsivité*/
+/* Mobile: menu replié avec bouton */
+@media (max-width: 768px){
+  .menu button.menu-toggle{
+    display: block; /* afficher le bouton sur mobile/tablette */
+  }
+  .menu .Main-Nav{
+    position: absolute;
+    top:-20px;
+    right: -100%;
+    background-color: var(--cafe-brun);
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 6px;
+   /*display: none;  caché par défaut */
+    align-items: start;
+    justify-content: start;
+  }
+  .menu .Main-Nav.open{
+    right: 20px;
+  }
+  nav ul li a {
+    font-size: 1rem;
+    padding: 8px 12px;
+  }
+  footer.footer {
+	
+	padding: 10px;
+	
+}
+}
+

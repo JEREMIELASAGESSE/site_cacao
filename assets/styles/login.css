@@ -1,0 +1,63 @@
+
+            :root {
+                --cacao-brun: #4E342E;
+                --cafe-brun: #6D4C41;
+                --beige-creme: #F5F5DC;
+                --vert-feuillage: #388E3C;
+                --or-dore: #D4AF37;
+                --blanc-casse: #FAF9F6;
+                --or-dore-claire: #e1b00d;
+                --noire-police: #131211;
+            }
+
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                padding: 20px;
+            }
+
+            form {
+                background-color: #fff;
+                padding: 30px;
+                max-width: 350px;
+                margin: auto;
+                border-radius: 15px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            h1 {
+                text-align: center;
+                margin-bottom: 5px;
+                color: var(--cacao-brun);
+                font-size: 2rem;
+            }
+
+            input[type="text"],
+            input[type="date"],
+            input[type="file"],
+            input[type="password"] {
+                width: 100%;
+                padding: 10px;
+                margin: 10px 0;
+                border: 1px solid #ccc;
+                border-radius: 10px 0 0 10px;
+                /* Bord gauche arrondi */
+            }
+
+            input[type="submit"],button[type="submit"] {
+                width: 100%;
+                padding: 12px;
+                background-color: var(--cafe-brun);
+                color: white;
+                border: none;
+                border-radius: 0 20px 20px 0;
+                /* Bord droit arrondi */
+                font-size: 15px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            input[type="submit"]:hover {
+                background-color: var(--cacao-brun);
+            }
