@@ -1,11 +1,29 @@
+<?php
+require("config/config.php");
+
+$stmt = $pdo->query("
+    SELECT 
+        (SELECT COUNT(*) FROM Producteur) AS nb_producteurs,
+        (SELECT COUNT(*) FROM Zone) AS nb_zones,
+        (SELECT SUM(surface_cultivee) FROM Cultiver) AS surface_totale
+");
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
+?>
+
+<h2>Statistiques générales</h2>
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="assets/images/logo/logo.png">
     <link rel="stylesheet" href="assets/styles/index.css">
-    <title> A propos de DIGITAL KPADJALE</title>
+    <title> A propos de COOP-CA COOPAAHS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
@@ -13,32 +31,27 @@
     <div class="home-page__background_apropos">
         <h1>
             A Propos de <br>
-            <strong>DIGILTAL CACAO KPADJALE</strong>
-            <strong> (DCK)</strong>
+            <strong>COOP-CA COOPAAHS</strong>
+
         </h1>
     </div>
+    <ul id="affiche_des_statistiques">
+        <li><i class="fa-solid fa-users icon"></i> <br> <b><?= $result['nb_producteurs'] ?> +</b><br> Coopérateurs</li>
+        <li><i class="fa-solid fa-map-marker-alt icon"><br></i><b><br><?= $result['nb_zones'] ?></b><br> Zones d'interventions</li>
+        <li><i class="fa-solid fa-tractor icon"></i><br><b><?= $result['surface_totale'] ?></b> <br>hectares cultivés</li>
+    </ul>
     <section class="propos-page">
+        <h2>Notre Mission</h2>
         <p>
-            DIGITAL CACAO KPADJALE (DCK) est une organisation coopérative
-            qui regroupe des producteurs agricoles de la région du Haut Sassandra en Côte d'Ivoire.
-            Notre mission est de promouvoir l'agriculture durable et de soutenir les agriculteurs locaux
-            dans leurs efforts pour améliorer leurs conditions de vie.
+            commercialiser du cacao de qualité de nos membres à des meilleurs prix
+            pour améliorer le cadre de vie de la communauté.
         </p>
         <p>
-            Nous croyons fermement que la coopération est la clé pour surmonter les défis auxquels
-            les agriculteurs sont confrontés. En travaillant ensemble, nous pouvons partager des ressources
-            et des connaissances, accéder à de nouveaux marchés et améliorer la qualité de nos produits.
+            COOP-CA COOPAAHS a été Créée en 2014 à la suite d’une assemblée générale constitutive tenue par 1 076 producteurs venant de 11 localités.
+            Elle compte à ce jour 3500 producteurs dont 2500 membres repartis dans 30 localités avec 10685 Ha de cacaoyère. 1087 de ces membres sont également certifiés Rainforest Alliance (RA).
         </p>
         <p>
-            Notre coopérative est engagée dans la durabilité environnementale et sociale. Nous encourageons
-            l'utilisation de pratiques agricoles respectueuses de l'environnement et nous nous efforçons
-            de garantir que nos membres bénéficient d'un revenu équitable pour leur travail.
-        </p>
-        <p>
-            En tant que coopérative, nous sommes également déterminés à renforcer la communauté locale.
-            Nous soutenons des initiatives éducatives et sociales qui visent à améliorer la vie des
-            agriculteurs et de leurs familles. Nous croyons que le développement économique doit aller de
-            pair avec le développement social.
+            Pour le respect de ses membres la COOP-CA COOPAAHS dit non à toute forme de discrimination.
         </p>
     </section>
     <section class="propos-page">
@@ -82,27 +95,27 @@
         </ul>
         </p>
     </section>
-    <section class="propos-page">
+    <!-- <section class="propos-page">
         <h2>Notre Équipe</h2>
         <div class="equipes">
             <div class="equipe">
-                <img src="assets/images/image/hypiness.jpg" alt="Membre de l'équipe 1">
+                <img src="assets/images/image/hypiness.jp" alt="Membre de l'équipe 1">
                 <h3>N'DRI KOUAME JEREMIE</h3>
                 <h4>fonction</h4>
             </div>
             <div class="equipe">
-                <img src="assets/images/image/happyness1.jpg" alt="Membre de l'équipe 2">
+                <img src="assets/images/image/happyness1.jp" alt="Membre de l'équipe 2">
                 <h3>KONAN AYA DORCAS</h3>
                 <h4>fonction</h4>
             </div>
             <div class="equipe">
-                <img src="assets/images/image/happyness2.jpg" alt="Membre de l'équipe 3">
+                <img src="assets/images/image/happyness2.jp" alt="Membre de l'équipe 3">
                 <h3>N'DRI SAGESSE</h3>
                 <h4>fonction</h4>
 
             </div>
 
-        </div>
+        </div> -->
     </section>
     <?php include 'footer.php'; ?>
 </body>

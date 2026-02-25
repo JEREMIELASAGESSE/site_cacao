@@ -1,6 +1,6 @@
 /*LES COULEURS*/
 :root {
-  --cacao-brun: #4E342E;
+  --cacao-brun: #3b241f;
   --cafe-brun: #6D4C41;
   --beige-creme: #F5F5DC;
   --vert-feuillage: #388E3C;
@@ -64,7 +64,7 @@ nav ul li.active a {
   left: 0;
   right: 0;
   z-index: 1000;
-  background-color:#6D4C41;
+  background-color: var(--cacao-brun);
   box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
   padding: 10px 20px;
   display: flex;
@@ -78,21 +78,64 @@ nav ul li.active a {
   width: auto;
   vertical-align: middle;
 }
-/*Style du pied de page*/
-footer.footer {
-    background-color: #6D4C41;
-    padding: 20px;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+.menu p h1 {
+  margin: 0;
+  font-size: 1.5rem;
 }
-footer.footer p {
-    margin: 0;
-    color: #F5F5DC;
-    font-size: 14px;
+/*Style du pied de page*/
+footer {
+    background-color: var(--cacao-brun);
+    color: var(--or-dore);
     text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    border-top: #D3D3D3 1px solid;
+}
+footer a {
+    color: var(--beige-creme);
+    text-decoration: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0 10px;
+}
+footer a:hover {
+    text-decoration: underline;
+    color: var(--or-dore);
+}
+#parti1{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+.rand{
+    flex: 1;
+    min-width: 150px;
+    text-align: left;
+}
+.rand img{
+    max-width: 100px;
+    margin-bottom: 10px;
+}
+.rand ul{
+    list-style: none;
+    padding: 0;
+}
+.rand ul li{
+    margin: 8px 0;
+}
+.rand ul li a{
+    color: var(--beige-creme);
+    text-decoration: none;
+}
+.rand ul li a:hover{
+    text-decoration: underline;
+    color: var(--or-dore);
+}
+#finpied{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-top: #D3D3D3 1px solid;
 }
 /* Bouton hamburger */
 .menu button.menu-toggle {

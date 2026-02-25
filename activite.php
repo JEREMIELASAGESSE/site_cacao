@@ -1,8 +1,6 @@
 <?php
 require 'config/config.php';
 $actions = $pdo->query("SELECT * FROM actions ORDER BY id DESC");
-
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -10,6 +8,7 @@ $actions = $pdo->query("SELECT * FROM actions ORDER BY id DESC");
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="assets/images/logo/logo.png">
   <link rel="stylesheet" href="assets/styles/index.css">
   <title>Nos Actions</title>
   <style>

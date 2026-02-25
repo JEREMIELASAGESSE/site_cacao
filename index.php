@@ -4,20 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="assets/images/logo/logo.png">
     <link rel="stylesheet" href="assets/styles/index.css">
     <script src="assets/js/script.js"></script>
-    <title>DIGITAL KPADJALE</title>
+    <title>COOP-CA COOPAAHS</title>
 </head>
 
 <body>
     <?php include('menu.php'); ?>
     <div class="home-page__background_index">
         <h1>
-            Bienvenue sur le site de
+            Bienvenue sur le site de la
             <br>
-            <strong>DIGITAL CACAO KPADJALE </strong>
+            <strong>Société Coopérative Agricole Anitché du Haut Sassandra</strong>
             <br>
-            <strong>(DCK)</strong>
+            <strong>(COOP-CA COOPAAHS)</strong>
         </h1>
 
     </div>
@@ -28,20 +29,6 @@
     <section class="home-page">
 
     </section>
-    <section class="home-page1">
-        <h2>Notre Mission</h2>
-        <p>
-            commercialiser du cacao de qualité de nos membres à des meilleurs prix
-            pour améliorer le cadre de vie de la communauté.
-        </p>
-        <p>
-            CACAO KPADJALE a été Créée en 2014 à la suite d’une assemblée générale constitutive tenue par 1 076 producteurs venant de 11 localités.
-            Elle compte à ce jour 3500 producteurs dont 2500 membres repartis dans 30 localités avec 10685 Ha de cacaoyère. 1087 de ces membres sont également certifiés Rainforest Alliance (RA).
-        </p>
-        <p>
-            Pour le respect de ses membres la CACAO KPADJALE dit non à toute forme de discrimination.
-        </p>
-    </section>
     <section class="home-page2">
         <div class="home-page2__content">
             <img src="assets/images/image/CACAO 8.png" alt="Nos Valeurs" class="home-page2__image">
@@ -51,28 +38,23 @@
         <div class="home-page2__content">
             <img src="assets/images/image/cacaoRose.jpg" alt="Nos Valeurs" class="home-page2__image">
             <br>
-            <a href="contact.php" class="home-page2__link">Nous contacter</a>
+            <a href="contact.php" class="home-page2__link">Contactez-Nous</a>
         </div>
         <div class="home-page2__content">
             <img src="assets/images/image/actions.png" alt="Nos Valeurs" class="home-page2__image">
             <br>
-            <a href="contact.php" class="home-page2__link">Nos Actions</a>
+            <a href="contact.php" class="home-page2__link">Nos Actions Sociales</a>
         </div>
-    </section>
-    <section class="home-page3">
-        <h2>Nos Valeurs</h2>
-        <p>
-            CACAO KPADJALE est une coopérative qui se veut être un modèle de gouvernance, de transparence et de responsabilité sociale.
-            Elle s’engage à respecter les principes coopératifs et à promouvoir le développement durable dans toutes ses actions.
-        </p>
-        <p>
-            CACAO KPADJALE est engagée dans la lutte contre le travail des enfants et la déforestation.
-            Elle œuvre pour l’amélioration des conditions de vie de ses membres et de la communauté.
-        </p>
-        <p>
-            CACAO KPADJALE est une coopérative qui se veut être un modèle de gouvernance, de transparence et de responsabilité sociale.
-            Elle s’engage à respecter les principes coopératifs et à promouvoir le développement durable dans toutes ses actions.
-        </p>
+        <div class="home-page2__content">
+            <img src="assets/images/image/durabilité.jpg" alt="Nos Valeurs" class="home-page2__image">
+            <br>
+            <a href="durabilite.php" class="home-page2__link">Durabilité</a>
+        </div>
+        <div class="home-page2__content">
+            <img src="assets/images/image/zone.jpg" alt="Nos Valeurs" class="home-page2__image">
+            <br>
+            <a href="zones.php" class="home-page2__link">Nos Zones Actions</a>
+        </div>
     </section>
     <?php include 'footer.php'; ?>
 

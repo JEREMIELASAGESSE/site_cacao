@@ -10,7 +10,7 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
 $id = $_GET['id'];
 
 // Récupère les données du produit
-$stmt = $pdo->prepare("SELECT * FROM produits WHERE id = ?");
+$stmt = $pdo->prepare("SELECT * FROM produits WHERE id_produit = ?");
 $stmt->execute([$id]);
 $produit = $stmt->fetch();
 

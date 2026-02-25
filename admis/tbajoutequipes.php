@@ -65,4 +65,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     ]);
 
     echo "Utilisateur ajouté avec succès.";
+    header("Location: tbequipes.php");
+    //vider champs
+    $_POST = [];
+    exit();
 }

@@ -1,9 +1,40 @@
+<?php
+include("config/config.php");
+
+// Ajouter un produit
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $nom = $_POST['nom_produit'];
+  $description = $_POST['description'];
+  $date = $_POST['date'];
+
+  // Gestion de l'image
+  $photo = $_FILES['photo']['name'];
+  $target = 'uploads/' . basename($photo);
+  move_uploaded_file($_FILES['photo']['tmp_name'], $target);
+
+  $stmt = $pdo->prepare("INSERT INTO produits (nom_produit, description, date, photo) VALUES (?, ?, ?, ?)");
+  $stmt->execute([$nom, $description, $date, $photo]);
+}
+
+// Supprimer un produit
+if (isset($_GET['delete'])) {
+  $id = $_GET['delete'];
+  $stmt = $pdo->prepare("DELETE FROM produits WHERE id = ?");
+  $stmt->execute([$id]);
+  header("Location: tbproduits.php");
+  exit;
+}
+// Récupérer les produits
+$produits = $pdo->query("SELECT * FROM produits")->fetchAll();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="assets/images/logo/logo.png">
   <link rel="stylesheet" href="assets/styles/index.css">
   <title>Nos produits</title>
 </head>
@@ -15,30 +46,17 @@
     <!-- <img src="" alt="Image de fond" class="home-page__image" class="produit-image"> -->
   </div>
   <section class="propos-page">
-    <div class="equipes">
-      <div class="cart-produit">
-        <img src="assets/images/image/produit1.jpg" alt="Produit 1" class="produit-image">
-        <div class="produit-details">
-          <h2>Beurre de Cacao</h2>
-          <p>
-            Notre beurre de cacao est fabriqué à partir des fèves de cacao les plus fines,
-            offrant une qualité exceptionnelle pour vos produits cosmétiques et culinaires.
-          </p>
+    <?php foreach ($produits as $produit): ?>
+      <div class="equipes">
+        <div class="cart-produit">
+          <img src="admis/uploads/<?= htmlspecialchars($produit['photo']) ?>" alt="<?= htmlspecialchars($produit['nom_produit']) ?>" class="produit-image">
+          <div class="produit-details">
+            <h2><?= htmlspecialchars($produit['nom_produit']) ?></h2>
+            <p><?= htmlspecialchars($produit['description']) ?></p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="equipes">
-      <div class="cart-produit">
-        <img src="assets/images/image/produit1.jpg" alt="Produit 1" class="produit-image">
-        <div class="produit-details">
-          <h2>Beurre de Cacao</h2>
-          <p>
-            Notre beurre de cacao est fabriqué à partir des fèves de cacao les plus fines,
-            offrant une qualité exceptionnelle pour vos produits cosmétiques et culinaires.
-          </p>
-        </div>
-      </div>
-    </div>
+    <?php endforeach; ?>
   </section>
   <?php include 'footer.php'; ?>
 </body>

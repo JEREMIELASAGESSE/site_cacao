@@ -1,5 +1,5 @@
 :root {
-  --cacao-brun: #4E342E;
+--cacao-brun: #3b241f;
   --cafe-brun: #6D4C41;
   --beige-creme: #F5F5DC;
   --vert-feuillage: #388E3C;
@@ -29,7 +29,7 @@ button:active {
    background-color: var(--beige-creme);
 }
 .home-page h1 {
-    color: #6D4C41;
+    color:var(--cacao-brun);
     font-size: 2rem;
     margin: 0;
     padding: 20px;
@@ -125,19 +125,18 @@ button:active {
     margin: 10px auto;
     max-width: 1000px;
     display: flex;
-    gap: 20px;
     flex-wrap: wrap;
+    gap: 20px;
+     justify-content: center;
 }
 .home-page2__content {
-    flex: 1;
-    width: 270px;
+    width: 400px;
     padding: 15px;
     background-color: var(--beige-creme);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--cafe-brun);
     border-radius: 10px;
     text-align: center;
-
 }
 .home-page2__image {
     width: 100%;
@@ -187,7 +186,7 @@ button:active {
 }
 /*style de la page à propos*/
 .propos-page {
-    margin-top: 5rem;
+    margin-top: 4.5rem;
     background-color: var(--beige-creme);
     padding: 20px;
     border-radius: 10px;
@@ -244,18 +243,36 @@ button:active {
     height: auto;
     border-radius: 10px;
 }
-/*style de la page produit*/
-.cart-produit {
+/*Affichage des statistiques*/
+#affiche_des_statistiques {
+    display: flex;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--noire-police);
+    margin: 20px 0;
+    position: absolute;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+    gap: 40px;
+    top: 23rem;
+}
+#affiche_des_statistiques li {
+    list-style: none;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    gap: 20px;
+    max-width: 1200px;
+    padding: 20px;
     background-color: var(--beige-creme);
     border: 1px solid var(--cafe-brun);
     border-radius: 10px;
-    padding: 20px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    gap: 20px;
-    max-width: 900px;
+}
+.icon, #affiche_des_statistiques li .icon {
+    font-size: 2rem;
+    color: var(--or-dore-claire);
+    margin-bottom: 10px;
+    width: 20px;
 }
 .cart-produit img {
     width: 60%;
@@ -276,16 +293,44 @@ button:active {
 .produit-details{
     width: 40%;
 }
-/*page de contact*/
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif; /* Police de caractères */
+/*durabilité*/
+.home-page__background_durabilite {
+  background-image: url('../images/image/durabilité.jpg'); /* Chemin de l'image */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  margin-top: 6rem;
+  text-align: center;
+}
+.home-page__background_durabilite h1 {
+  padding-top: 1rem;
+  color: var(--cacao-brun);
+  font-size: 2.5rem;
+  margin-top: 2rem;
+  text-shadow: 2px 2px 4px rgba(253, 253, 253, 0.984);
 }
 
-.contact {
-  margin-top: 5rem;
+/*zones*/
+.home-page__background_zones {
+  background-image: url('../images/image/zone.jpg'); /* Chemin de l'image */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  margin-top: 6rem;
   text-align: center;
+}
+.home-page__background_zones h1 {
+  padding-top: 1rem;
+  color: var(--cacao-brun);
+  font-size: 2.5rem;
+  margin-top: 2rem;
+  text-shadow: 2px 2px 4px rgba(253, 253, 253, 0.984);
 }
 .image {
     background-image: url('/images/font2.jpg'); /* Chemin de l'image */

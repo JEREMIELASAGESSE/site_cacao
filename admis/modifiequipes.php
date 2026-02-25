@@ -15,10 +15,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $nom = trim($_POST["nom_U"]);
   $prenom = trim($_POST["prenom_U"]);
   $user = trim($_POST["user"]);
+  $password = $_POST["password"];
   $contact = trim($_POST["contact_U"]);
   $adresse = trim($_POST["Adresse_U"]);
   $date = $_POST["date"];
-
+  // Hachage du mot de passe
+  $mdp_hash = password_hash($password, PASSWORD_DEFAULT);
   // Gestion de la photo
   $photoPath = null;
   if (isset($_FILES["photo"]) && $_FILES["photo"]["error"] === UPLOAD_ERR_OK) {
@@ -35,11 +37,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
   // Mise à jour avec ou sans nouvelle photo
   if ($photoPath) {
-    $sql = "UPDATE utilisateur SET nom_U = :nom, prenom_U = :prenom, user = :user, contact_U = :contact, Adresse_U = :adresse, date = :date, photo = :photo WHERE id = :id";
-    $params = [":nom" => $nom, ":prenom" => $prenom, ":user" => $user, ":contact" => $contact, ":adresse" => $adresse, ":date" => $date, ":photo" => $photoPath, ":id" => $id];
+    $sql = "UPDATE utilisateur SET nom_U = :nom, prenom_U = :prenom, user = :user,password = :password, contact_U = :contact, Adresse_U = :adresse, date = :date, photo = :photo WHERE id = :id";
+    $params = [":nom" => $nom, ":prenom" => $prenom, ":user" => $user, ":password" => $mdp_hash, ":contact" => $contact, ":adresse" => $adresse, ":date" => $date, ":photo" => $photoPath, ":id" => $id];
   } else {
-    $sql = "UPDATE utilisateur SET nom_U = :nom, prenom_U = :prenom, user = :user, contact_U = :contact, Adresse_U = :adresse, date = :date WHERE id = :id";
-    $params = [":nom" => $nom, ":prenom" => $prenom, ":user" => $user, ":contact" => $contact, ":adresse" => $adresse, ":date" => $date, ":id" => $id];
+    $sql = "UPDATE utilisateur SET nom_U = :nom, prenom_U = :prenom, user = :user,password =:password, contact_U = :contact, Adresse_U = :adresse, date = :date WHERE id = :id";
+    $params = [":nom" => $nom, ":prenom" => $prenom, ":user" => $user, ":password" => $mdp_hash, ":contact" => $contact, ":adresse" => $adresse, ":date" => $date, ":id" => $id];
   }
 
   $stmt = $pdo->prepare($sql);
@@ -172,6 +174,7 @@ if (!$utilisateur) {
     <input type="text" name="nom_U" value="<?= htmlspecialchars($utilisateur['nom_U']) ?>" required>
     <input type="text" name="prenom_U" value="<?= htmlspecialchars($utilisateur['prenom_U']) ?>" required>
     <input type="text" name="user" value="<?= htmlspecialchars($utilisateur['user']) ?>" required>
+    <input type="password" name="password" value="<?= htmlspecialchars($utilisateur['password']) ?>" required>
     <input type="text" name="contact_U" value="<?= htmlspecialchars($utilisateur['contact_U']) ?>" required>
     <input type="text" name="Adresse_U" value="<?= htmlspecialchars($utilisateur['Adresse_U']) ?>" required>
     <input type="date" name="date" value="<?= htmlspecialchars($utilisateur['date']) ?>" required>

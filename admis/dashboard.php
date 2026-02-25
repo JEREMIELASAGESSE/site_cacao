@@ -1,17 +1,28 @@
 <?php
 session_start();
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit;
 }
+require '../config/config.php';
+// Compter les actions
+$sql = "SELECT COUNT(*) AS total_actions FROM actions";
+$stmt = $pdo->query($sql);
+$row_actions = $stmt->fetch();
+// Compter les partenaires
+$sql = "SELECT COUNT(*) AS total_partenaires FROM partenaire";
+$stmt = $pdo->query($sql);
+$row_partenaires = $stmt->fetch();
 htmlspecialchars($_SESSION['user'])
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../assets/images/logo/logo.png">
     <link rel="stylesheet" href="../assets/styles/tableau.css">
     <title>Tableau de bord</title>
 </head>
@@ -19,6 +30,7 @@ htmlspecialchars($_SESSION['user'])
 <body>
     <h1 class="font1">
         <strong>Bienvenue sur le tableau de bord !</strong>
+        <?php echo htmlspecialchars($_SESSION['user']); ?>
     </h1>
 
     <ul style="border-top-left-radius: 30px;
@@ -47,24 +59,12 @@ htmlspecialchars($_SESSION['user'])
             <tr>
                 <td>
                     <nav>
-                        nombres d'équipes :
-                    </nav>
-                </td>
-                <td>
-                    <nav>
-                        <strong>0</strong>
-                    </nav>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <nav>
                         nombres d'actions :
                     </nav>
                 </td>
                 <td>
                     <nav>
-                        <strong>0</strong>
+                        <strong><?= $row_actions['total_actions'] ?></strong>
                     </nav>
                 </td>
             </tr>
@@ -76,7 +76,7 @@ htmlspecialchars($_SESSION['user'])
                 </td>
                 <td>
                     <nav>
-                        <strong>0</strong>
+                        <strong><?= $row_partenaires['total_partenaires'] ?></strong>
                     </nav>
                 </td>
             </tr>
@@ -104,15 +104,33 @@ htmlspecialchars($_SESSION['user'])
             </ul>
         </div>
         <div class="fonctionnalite">
-            <img src="../assets/images/image/equipes.png" alt="Gestion des actions">
-            <ul>
-                <li><a href="tbmembre.php">Gestion de l'équipe</a></li>
-            </ul>
-        </div>
-        <div class="fonctionnalite">
             <img src="../assets/images/image/action4.jpg" alt="Gestion des actions">
             <ul>
                 <li><a href="tbequipes.php">Gestion des utilisateurs</a></li>
+            </ul>
+        </div>
+        <div class="fonctionnalite">
+            <img src="../assets/images/image/cooperant.jpg" alt="Gestion des coopérants">
+            <ul>
+                <li><a href="tbcooperant.php">Gestion des coopérants</a></li>
+            </ul>
+        </div>
+        <div class="fonctionnalite">
+            <img src="../assets/images/image/zone.jpg" alt="Gestion des zones">
+            <ul>
+                <li><a href="tbzone.php">Gestion des zones</a></li>
+            </ul>
+        </div>
+        <div class="fonctionnalite">
+            <img src="../assets/images/image/durabilité.jpg" alt="Gestion de la durabilité">
+            <ul>
+                <li><a href="tbdurabilite.php">Gestion de la durabilité</a></li>
+            </ul>
+        </div>
+        <div class="fonctionnalite">
+            <img src="../assets/images/image/durabilité.jpg" alt="Gestion de la durabilité">
+            <ul>
+                <li><a href="cultiver.php">liste des producteur par zone et leur culture</a></li>
             </ul>
         </div>
     </div>

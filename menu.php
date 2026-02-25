@@ -10,7 +10,9 @@
 
 <body>
     <nav class="menu">
-        <img src="assets/images/logo/logo_orange.jpg" alt="Logo" class="logo">
+        <P> <img src="assets/images/logo/logo.png" alt="Logo" class="logo">
+        <h1>COOP-CA COOPAAHS</h1>
+        </P>
         <button class="menu-toggle" aria-controls="main-nav" aria-expanded="false" id="menu-toggleO">
             ☰
         </button>
@@ -19,14 +21,20 @@
                 ☰
             </button>
             <li id="acceuil1" class="">
-                <a href="index.php">Accueil</a>
+                <a href="index.php"></a>
             </li>
             <li id="produit1" class="">
-                <a href="produit.php">Produits</a>
+                <a href="produit.php">Activites</a>
+            </li>
+            <li id="activite1" class="">
+                <a href="activite.php">Actions Sociales</a>
             </li>
 
-            <li id="activite1" class="">
-                <a href="activite.php">Nos Actions</a>
+            <li id="apropos1" class="">
+                <a href="durabilite.php">Durabilité</a>
+            </li>
+            <li id="apropos1" class="">
+                <a href="zones.php">Zones</a>
             </li>
             <li id="apropos1" class="">
                 <a href="apropos.php">A Propos</a>
