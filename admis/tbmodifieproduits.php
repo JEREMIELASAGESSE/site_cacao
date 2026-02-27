@@ -22,7 +22,6 @@ if (!$produit) {
 // Traitement du formulaire
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nom = $_POST['nom_produit'];
-    $description = $_POST['description'];
     $date = $_POST['date'];
 
     // Gestion de l'image
@@ -35,8 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Mise à jour en base
-    $stmt = $pdo->prepare("UPDATE produits SET nom_produit=?, description=?, date=?, photo=? WHERE id=?");
-    $stmt->execute([$nom, $description, $date, $photo, $id]);
+    $stmt = $pdo->prepare("UPDATE produits SET nom_produit=?,  date=?, photo=? WHERE id_produit=?");
+    $stmt->execute([$nom, $date, $photo, $id]);
 
     // Redirection
     header("Location: tbproduits.php");
@@ -146,7 +145,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <form action="" method="post" enctype="multipart/form-data">
         <h1 id="previewContainer">Modifier le produit</h1>
         <input type="text" name="nom_produit" value="<?= htmlspecialchars($produit['nom_produit']) ?>" required>
-        <input type="text" name="description" value="<?= htmlspecialchars($produit['description']) ?>" required>
         <input type="date" name="date" value="<?= htmlspecialchars($produit['date']) ?>" required>
         <p>Photo actuelle :</p>
         <img src="uploads/<?= htmlspecialchars($produit['photo']) ?>" width="100" id="previewContainer">

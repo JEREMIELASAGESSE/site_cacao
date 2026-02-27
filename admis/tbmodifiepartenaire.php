@@ -190,10 +190,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         <?php endif; ?>
 
-        <input type="text" name="nom_U" value="<?= htmlspecialchars($u['nom_U']) ?>" required>
-        <input type="text" name="prenom_U" value="<?= htmlspecialchars($u['prenom_U']) ?>" required>
-        <input type="text" name="contact_U" value="<?= htmlspecialchars($u['contact_U']) ?>" required>
-        <input type="text" name="Adresse_U" value="<?= htmlspecialchars($u['Adresse_U']) ?>" required>
+        <input type="text" name="nom_u" value="<?= htmlspecialchars($u['nom_u']) ?>" required>
+        <input type="text" name="prenom_u" value="<?= htmlspecialchars($u['prenom_u']) ?>" required>
+        <input type="text" name="contact_u" value="<?= htmlspecialchars($u['contact_u']) ?>" required>
+        <input type="text" name="adresse_u" value="<?= htmlspecialchars($u['adresse_u']) ?>" required>
         <input type="date" name="date" value="<?= htmlspecialchars($u['date']) ?>" required>
         <p>Photo actuelle :</p>
         <img src="uploads/<?= htmlspecialchars($u['photo']) ?>" width="100"><br>

@@ -10,13 +10,13 @@ $stmt = $pdo->prepare("
         COUNT(DISTINCT c.id_producteur) AS nb_producteurs,
         (
             SELECT COUNT(DISTINCT pr2.id_producteur)
-            FROM Producteur pr2
+            FROM producteur pr2
             WHERE pr2.id_zone = z.id_zone
         ) AS total_producteurs_zone
-    FROM Cultiver c
-    JOIN Producteur pr ON c.id_producteur = pr.id_producteur
-    JOIN Zone z ON pr.id_zone = z.id_zone
-    JOIN Produits p ON c.id_produit = p.id_produit
+    FROM cultiver c
+    JOIN producteur pr ON c.id_producteur = pr.id_producteur
+    JOIN zone z ON pr.id_zone = z.id_zone
+    JOIN produits p ON c.id_produit = p.id_produit
     GROUP BY z.id_zone, z.nom_zone, p.nom_produit
     ORDER BY z.nom_zone, p.nom_produit
 ");

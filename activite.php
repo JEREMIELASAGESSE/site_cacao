@@ -60,37 +60,40 @@ $actions = $pdo->query("SELECT * FROM actions ORDER BY id DESC");
 <body>
   <?php include('menu.php'); ?>
   <div class="home-page__background_activite">
-    <h1><strong>NOS PRODUCTEURS AU COEUR DE NOS ACTIONS</strong></h1>
-
   </div>
-  <section class="propos-page">
-    <!-- Affichage des actions -->
-    <div id="equipes">
-      <?php foreach ($actions as $action): ?>
-        <div class="cart-produit" class="slider-container">
-          <div class="slider-wrapper">
-            <button class="slider-btn left">&#10094;</button>
-            <div class="content-slider">
-              <img src="admis/uploads/<?= htmlspecialchars($action['photo1']) ?>" alt="Produit 1" class="produit-image">
-              <img src="admis/uploads/<?= htmlspecialchars($action['photo2']) ?>" alt="Produit 1" class="produit-image">
-              <img src="admis/uploads/<?= htmlspecialchars($action['photo3']) ?>" alt="Produit 1" class="produit-image">
-              <img src="admis/uploads/<?= htmlspecialchars($action['photo4']) ?>" alt="Produit 1" class="produit-image">
-              <img src="admis/uploads/<?= htmlspecialchars($action['photo5']) ?>" alt="Produit 1" class="produit-image">
-              <img src="admis/uploads/<?= htmlspecialchars($action['photo6']) ?>" alt="Produit 1" class="produit-image">
-            </div>
-            <button class="slider-btn right">&#10095;</button>
-          </div>
-          <div class="produit-details">
-            <h2><?= $action['nom_produit']; ?></h2>
-            <p>
-              <span class="localite"><strong><?= $action['beneficiere']; ?></strong></span><br>
-              <span class="description"><strong><?= $action['description']; ?></strong></span><br>
-            </p>
-          </div>
+  <div id="afficher_actions_sociales">
+    <div id="partie1">
+      <h1>Actions sociales</h1>
+      <p>Au-delà de l'agriculture, nous investissons dans le bien-être de nos communautés à travers des projets concrets et durables.</p>
+      <div id="fonction">
+        <div class="cart-action">
+          <a href="afficheraction.php">
+            <h2>Éducation</h2>
+          </a>
+          <p>Construction d'écoles et bourses scolaires pour les enfants des coopérateurs.</p>
         </div>
-      <?php endforeach; ?>
-
-  </section>
+        <div class="cart-action">
+          <a href="afficheraction.php">
+            <h2>Santé</h2>
+          </a>
+          <p>Campagnes de sensibilisation et accès aux soins de santé dans les communautés.</p>
+        </div>
+        <div class="cart-action">
+          <a href="afficheraction.php">
+            <h2>Eau potable</h2>
+          </a>
+          <p>Installation de forages et systèmes d'adduction d'eau dans les villages.</p>
+        </div>
+        <div class="cart-action">
+          <a href="afficheraction.php">
+            <h2>Infrastructures</h2>
+          </a>
+          <p>Réhabilitation de routes et construction d'entrepôts de stockage.</p>
+        </div>
+      </div>
+    </div>
+    <div id="partie2"><img src="assets/images/image/action_sociale.png" alt="Actions sociales"></div>
+  </div>
   <script src="assets/js/script.js"></script>
   <?php include 'footer.php'; ?>
 </body>

@@ -12,12 +12,12 @@ try {
 // Vérification du formulaire
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Nettoyage des données
-    $nom = trim($_POST["nom_U"]);
-    $prenom = trim($_POST["prenom_U"]);
+    $nom = trim($_POST["nom_u"]);
+    $prenom = trim($_POST["prenom_u"]);
     $user = trim($_POST["user"]);
     $mdp = $_POST["password"];
-    $contact = trim($_POST["contact_U"]);
-    $adresse = trim($_POST["Adresse_U"]);
+    $contact = trim($_POST["contact_u"]);
+    $adresse = trim($_POST["adresse_u"]);
     $date = $_POST["date"];
     $photo = $_FILES["photo"];
 
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     // Insertion dans la base
-    $sql = "INSERT INTO utilisateur (nom_U, prenom_U, user, password, contact_U, Adresse_U, date, photo)
+    $sql = "INSERT INTO utilisateur (nom_u, prenom_u, user, password, contact_u, adresse_u, date, photo)
             VALUES (:nom, :prenom, :user, :mdp, :contact, :adresse, :date, :photo)";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([

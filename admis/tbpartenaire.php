@@ -200,10 +200,10 @@ $utilisateurs = $pdo->query("SELECT * FROM partenaire ORDER BY id DESC")->fetchA
             <tbody>
                 <?php foreach ($utilisateurs as $u): ?>
                     <tr>
-                        <td><?= htmlspecialchars($u['nom_U']) ?></td>
-                        <td><?= htmlspecialchars($u['prenom_U']) ?></td>
-                        <td><?= htmlspecialchars($u['contact_U']) ?></td>
-                        <td><?= htmlspecialchars($u['Adresse_U']) ?></td>
+                        <td><?= htmlspecialchars($u['nom_u']) ?></td>
+                        <td><?= htmlspecialchars($u['prenom_u']) ?></td>
+                        <td><?= htmlspecialchars($u['contact_u']) ?></td>
+                        <td><?= htmlspecialchars($u['adresse_u']) ?></td>
                         <td><?= htmlspecialchars($u['date']) ?></td>
                         <td>
                             <?php if (!empty($u['photo'])): ?>

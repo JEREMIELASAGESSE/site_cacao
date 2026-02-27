@@ -11,12 +11,12 @@ if (isset($_POST['ajouter'])) {
 // Supprimer une zone
 if (isset($_GET['supprimer'])) {
     $id = $_GET['supprimer'];
-    $stmt = $pdo->prepare("DELETE FROM Zone WHERE id = :id_zone");
-    $stmt->execute(['id' => $id]);
+    $stmt = $pdo->prepare("DELETE FROM zone WHERE id_zone = :id_zone");
+    $stmt->execute(['id_zone' => $id]);
 }
 
 // Afficher les zones
-$stmt = $pdo->query("SELECT * FROM Zone");
+$stmt = $pdo->query("SELECT * FROM zone");
 $zones = $stmt->fetchAll();
 ?>
 

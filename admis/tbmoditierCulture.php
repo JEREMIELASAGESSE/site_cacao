@@ -6,17 +6,17 @@ if (isset($_POST['modifier'])) {
     $prod = $_POST['id_producteur'];
     $produit = $_POST['id_produit'];
     $surface = $_POST['surface_cultivee'];
-    $stmt = $pdo->prepare("UPDATE Cultiver SET surface_cultivee = :surf WHERE id_producteur = :prod AND id_produit = :produit");
+    $stmt = $pdo->prepare("UPDATE cultiver SET surface_cultivee = :surf WHERE id_producteur = :prod AND id_produit = :produit");
     $stmt->execute(['surf' => $surface, 'prod' => $prod, 'produit' => $produit]);
 }
 
 // Affichage avec formulaire de modification
 $stmt = $pdo->query("
     SELECT c.id_producteur, c.id_produit, pr.nom_producteur, p.nom_produit, c.surface_cultivee, z.nom_zone
-    FROM Cultiver c
-    JOIN Producteur pr ON c.id_producteur = pr.id_producteur
-    JOIN Produit p ON c.id_produit = p.id_produit
-    JOIN Zone z ON pr.id_zone = z.id_zone
+    FROM cultiver c
+    JOIN producteur pr ON c.id_producteur = pr.id_producteur
+    JOIN produit p ON c.id_produit = p.id_produit
+    JOIN zone z ON pr.id_zone = z.id_zone
 ");
 $cultures = $stmt->fetchAll();
 ?>

@@ -6,12 +6,12 @@
         $nom = $_POST['nom_producteur'];
         $contact = $_POST['contact'];
         $zone = $_POST['id_zone'];
-        $stmt = $pdo->prepare("UPDATE Producteur SET nom_producteur = :nom, contact = :contact, id_zone = :zone WHERE id_producteur = :id");
+        $stmt = $pdo->prepare("UPDATE producteur SET nom_producteur = :nom, contact = :contact, id_zone = :zone WHERE id_producteur = :id");
         $stmt->execute(['nom' => $nom, 'contact' => $contact, 'zone' => $zone, 'id' => $id]);
     }
 
     // Affichage avec formulaire de modification
-    $stmt = $pdo->query("SELECT pr.*, z.nom_zone FROM Producteur pr JOIN Zone z ON pr.id_zone = z.id_zone");
+    $stmt = $pdo->query("SELECT pr.*, z.nom_zone FROM producteur pr JOIN zone z ON pr.id_zone = z.id_zone");
     $producteurs = $stmt->fetchAll();
     ?>
 

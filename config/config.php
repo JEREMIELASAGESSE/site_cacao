@@ -2,7 +2,7 @@
 //conection to database
 // Paramètres de connexion
 $host = 'localhost';       // Adresse du serveur MySQL
-$dbname = 'cacao'; // Nom de la base de données
+$dbname = 'cacao_site'; // Nom de la base de données
 $username = 'root';  // Nom d'utilisateur MySQL
 $password = ''; // Mot de passe MySQL
 

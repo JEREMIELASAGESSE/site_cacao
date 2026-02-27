@@ -22,12 +22,12 @@ if (!$u) {
 $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nom = trim($_POST['nom_U']);
-    $prenom = trim($_POST['prenom_U']);
+    $nom = trim($_POST['nom_u']);
+    $prenom = trim($_POST['prenom_u']);
     $post = trim($_POST['post']);
     $salaire = trim($_POST['salaire']);
-    $contact = trim($_POST['contact_U']);
-    $adresse = trim($_POST['Adresse_U']);
+    $contact = trim($_POST['contact_u']);
+    $adresse = trim($_POST['adresse_u']);
     $date = $_POST['date'];
 
     // Vérifications
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($errors)) {
-        $stmt = $pdo->prepare("UPDATE equipes SET nom_U=?, prenom_U=?, post=?, salaire=?, contact_U=?, Adresse_U=?, date=?, photo=? WHERE id=?");
+        $stmt = $pdo->prepare("UPDATE equipes SET nom_u=?, prenom_u=?, post=?, salaire=?, contact_u=?, adresse_u=?, date=?, photo=? WHERE id=?");
         $stmt->execute([$nom, $prenom, $post, $salaire, $contact, $adresse, $date, $photo, $id]);
 
         header("Location: tbmembre.php");
@@ -195,12 +195,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         <?php endif; ?>
 
-        <input type="text" name="nom_U" value="<?= htmlspecialchars($u['nom_U']) ?>" required>
-        <input type="text" name="prenom_U" value="<?= htmlspecialchars($u['prenom_U']) ?>" required>
+        <input type="text" name="nom_u" value="<?= htmlspecialchars($u['nom_u']) ?>" required>
+        <input type="text" name="prenom_u" value="<?= htmlspecialchars($u['prenom_u']) ?>" required>
         <input type="text" name="post" value="<?= htmlspecialchars($u['post']) ?>" required>
         <input type="text" name="salaire" value="<?= htmlspecialchars($u['salaire']) ?>" required>
-        <input type="text" name="contact_U" value="<?= htmlspecialchars($u['contact_U']) ?>" required>
-        <input type="text" name="Adresse_U" value="<?= htmlspecialchars($u['Adresse_U']) ?>" required>
+        <input type="text" name="contact_u" value="<?= htmlspecialchars($u['contact_u']) ?>" required>
+        <input type="text" name="adresse_u" value="<?= htmlspecialchars($u['adresse_u']) ?>" required>
         <input type="date" name="date" value="<?= htmlspecialchars($u['date']) ?>" required>
         <p>Photo actuelle :</p>
         <img src="uploads/<?= htmlspecialchars($u['photo']) ?>" width="100"><br>

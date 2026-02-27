@@ -3,9 +3,9 @@ require("config/config.php");
 
 $stmt = $pdo->query("
     SELECT 
-        (SELECT COUNT(*) FROM Producteur) AS nb_producteurs,
-        (SELECT COUNT(*) FROM Zone) AS nb_zones,
-        (SELECT SUM(surface_cultivee) FROM Cultiver) AS surface_totale
+        (SELECT COUNT(*) FROM producteur) AS nb_producteurs,
+        (SELECT COUNT(*) FROM zone) AS nb_zones,
+        (SELECT SUM(surface_cultivee) FROM cultiver) AS surface_totale
 ");
 $result = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>

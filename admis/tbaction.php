@@ -6,6 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $desc = $_POST['description'];
     $benef = $_POST['beneficiere'];
     $date = $_POST['date'];
+    $type_action = $_POST['id_type_action']; // Récupérer le type d'action sélectionné
 
     $photo1 = $_FILES['photo1'];
     $photo2 = $_FILES['photo2'];
@@ -28,11 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Requête déplacée ici, après la boucle
-    $stmt = $pdo->prepare("INSERT INTO actions (nom_produit, description, beneficiere, date, photo1, photo2, photo3, photo4, photo5, photo6)
-                           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->execute([$nom, $desc, $benef, $date, ...$photos]);
-
-    echo "Action ajoutée avec succès !";
+    $stmt = $pdo->prepare("INSERT INTO actions (nom_produit, description, beneficiere, date, photo1, photo2, photo3, photo4, photo5, photo6, id_type_action)
+                           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->execute([$nom, $desc, $benef, $date, ...$photos, $type_action]);
 }
 
 $actions = $pdo->query("SELECT * FROM actions")->fetchAll();
@@ -197,6 +196,15 @@ $actions = $pdo->query("SELECT * FROM actions")->fetchAll();
         </style>
         <form action="" method="post" enctype="multipart/form-data">
             <h1 id="previewContainer">Ajouter une action </h1>
+            <!-- un champ de selection  -->
+            <select name="id_type_action" required>
+                <?php
+                $types = $pdo->query("SELECT * FROM type_action")->fetchAll();
+                foreach ($types as $t) {
+                    echo "<option value='{$t['id_type_action']}' class='zone-option'>{$t['libelle']}</option>";
+                }
+                ?>
+            </select>
             <input type="text" name="nom_produit" placeholder="Intitulé de l'action" required>
             <input type="text" name="description" placeholder="Description de l'action" required>
             <input type="text" name="beneficiere" placeholder="Les bénéficieres " required>
@@ -249,7 +257,6 @@ $actions = $pdo->query("SELECT * FROM actions")->fetchAll();
                     <img src="" alt="" id="visualiser6" required>
                 </div>
             </div>
-
             <input type="submit" value="Ajouter une action">
         </form>
     </div>
@@ -275,6 +282,7 @@ $actions = $pdo->query("SELECT * FROM actions")->fetchAll();
                         <span class="localite"><strong><?= $action['beneficiere']; ?></strong></span><br>
                         <span class="description"><strong><?= $action['description']; ?></strong></span><br>
                         <span class="description"><strong><?= $action['date']; ?></strong></span><br>
+                        <span class="description"><strong><?= $action['id_type_action']; ?></strong></span><br>
                         <a href="modifier_action.php?id=<?= $action['id'] ?>">✏️ Modifier</a>
                         <a href="supprimer_action.php?id=<?= $action['id'] ?>" onclick="return confirm('Supprimer ?')">🗑️ Supprimer</a>
                     </p>
@@ -283,7 +291,6 @@ $actions = $pdo->query("SELECT * FROM actions")->fetchAll();
         <?php endforeach; ?>
 
     </div>
-    <?php include("../config/config.php"); ?>
     <script src="../assets/js/action.js"></script>
     <script src="../assets/js/script.js"></script>
 

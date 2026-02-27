@@ -4,7 +4,6 @@ include("../config/config.php");
 // Ajouter un produit
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nom = $_POST['nom_produit'];
-    $description = $_POST['description'];
     $date = $_POST['date'];
 
     // Gestion de l'image
@@ -12,14 +11,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $target = 'uploads/' . basename($photo);
     move_uploaded_file($_FILES['photo']['tmp_name'], $target);
 
-    $stmt = $pdo->prepare("INSERT INTO produits (nom_produit, description, date, photo) VALUES (?, ?, ?, ?)");
-    $stmt->execute([$nom, $description, $date, $photo]);
+    $stmt = $pdo->prepare("INSERT INTO produits (nom_produit, date, photo) VALUES (?, ?, ?)");
+    $stmt->execute([$nom, $date, $photo]);
 }
 
 // Supprimer un produit
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
-    $stmt = $pdo->prepare("DELETE FROM produits WHERE id = ?");
+    $stmt = $pdo->prepare("DELETE FROM produits WHERE id_produit = ?");
     $stmt->execute([$id]);
     header("Location: tbproduits.php");
     exit;
@@ -142,7 +141,6 @@ $produits = $pdo->query("SELECT * FROM produits")->fetchAll();
         <form action="" method="post" enctype="multipart/form-data">
             <h1 id="previewContainer">Ajouter un produit </h1>
             <input type="text" name="nom_produit" placeholder="Nom du produit" required>
-            <input type="text" name="description" placeholder="Description du produit" required>
             <input type="date" name="date" required>
             <input type="file" name="photo" placeholder="L'image du produit" id="imageInput" required>
             <input type="submit" value="Ajouter le produit" accept="image/*" required>
@@ -155,10 +153,9 @@ $produits = $pdo->query("SELECT * FROM produits")->fetchAll();
                 <img src="uploads/<?= htmlspecialchars($produit['photo']) ?>" alt="<?= htmlspecialchars($produit['nom_produit']) ?>" class="produit-image">
                 <div class="produit-details">
                     <h2><?= htmlspecialchars($produit['nom_produit']) ?></h2>
-                    <p><?= htmlspecialchars($produit['description']) ?></p>
                     <h3><?= htmlspecialchars($produit['date']) ?></h3>
-                    <h4><a href="tbmodifieproduits.php?id=<?= $produits['id_produit'] ?>">Modifier</a></h4>
-                    <h4><a href="?delete=<?= $produit['id'] ?>" onclick="return confirm('Supprimer ce produit ?')">Supprimer</a></h4>
+                    <h4><a href="tbmodifieproduits.php?id=<?= $produit['id_produit'] ?>">Modifier</a></h4>
+                    <h4><a href="?delete=<?= $produit['id_produit'] ?>" onclick="return confirm('Supprimer ce produit ?')">Supprimer</a></h4>
                 </div>
             </div>
         <?php endforeach; ?>

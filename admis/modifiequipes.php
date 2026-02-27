@@ -1,8 +1,6 @@
 <?php
 // Connexion à la base de données
-$pdo = new PDO("mysql:host=localhost;dbname=cacao;charset=utf8", "root", "");
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+require '../config/config.php';
 // Vérifie que l'ID est présent
 if (!isset($_GET['id'])) {
   die("ID utilisateur manquant.");
@@ -12,12 +10,12 @@ $id = intval($_GET['id']);
 
 // Traitement du formulaire
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-  $nom = trim($_POST["nom_U"]);
-  $prenom = trim($_POST["prenom_U"]);
+  $nom = trim($_POST["nom_u"]);
+  $prenom = trim($_POST["prenom_u"]);
   $user = trim($_POST["user"]);
   $password = $_POST["password"];
-  $contact = trim($_POST["contact_U"]);
-  $adresse = trim($_POST["Adresse_U"]);
+  $contact = trim($_POST["contact_u"]);
+  $adresse = trim($_POST["adresse_u"]);
   $date = $_POST["date"];
   // Hachage du mot de passe
   $mdp_hash = password_hash($password, PASSWORD_DEFAULT);
@@ -37,10 +35,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
   // Mise à jour avec ou sans nouvelle photo
   if ($photoPath) {
-    $sql = "UPDATE utilisateur SET nom_U = :nom, prenom_U = :prenom, user = :user,password = :password, contact_U = :contact, Adresse_U = :adresse, date = :date, photo = :photo WHERE id = :id";
+    $sql = "UPDATE utilisateur SET nom_u = :nom, prenom_u = :prenom, user = :user,password = :password, contact_u = :contact, adresse_u = :adresse, date = :date, photo = :photo WHERE id = :id";
     $params = [":nom" => $nom, ":prenom" => $prenom, ":user" => $user, ":password" => $mdp_hash, ":contact" => $contact, ":adresse" => $adresse, ":date" => $date, ":photo" => $photoPath, ":id" => $id];
   } else {
-    $sql = "UPDATE utilisateur SET nom_U = :nom, prenom_U = :prenom, user = :user,password =:password, contact_U = :contact, Adresse_U = :adresse, date = :date WHERE id = :id";
+    $sql = "UPDATE utilisateur SET nom_u = :nom, prenom_u = :prenom, user = :user,password =:password, contact_u = :contact, adresse_u = :adresse, date = :date WHERE id = :id";
     $params = [":nom" => $nom, ":prenom" => $prenom, ":user" => $user, ":password" => $mdp_hash, ":contact" => $contact, ":adresse" => $adresse, ":date" => $date, ":id" => $id];
   }
 
@@ -171,12 +169,12 @@ if (!$utilisateur) {
   </style>
   <h1>Modifier l'utilisateur</h1>
   <form method="post" enctype="multipart/form-data">
-    <input type="text" name="nom_U" value="<?= htmlspecialchars($utilisateur['nom_U']) ?>" required>
-    <input type="text" name="prenom_U" value="<?= htmlspecialchars($utilisateur['prenom_U']) ?>" required>
+    <input type="text" name="nom_u" value="<?= htmlspecialchars($utilisateur['nom_u']) ?>" required>
+    <input type="text" name="prenom_u" value="<?= htmlspecialchars($utilisateur['prenom_u']) ?>" required>
     <input type="text" name="user" value="<?= htmlspecialchars($utilisateur['user']) ?>" required>
     <input type="password" name="password" value="<?= htmlspecialchars($utilisateur['password']) ?>" required>
-    <input type="text" name="contact_U" value="<?= htmlspecialchars($utilisateur['contact_U']) ?>" required>
-    <input type="text" name="Adresse_U" value="<?= htmlspecialchars($utilisateur['Adresse_U']) ?>" required>
+    <input type="text" name="contact_u" value="<?= htmlspecialchars($utilisateur['contact_u']) ?>" required>
+    <input type="text" name="adresse_u" value="<?= htmlspecialchars($utilisateur['adresse_u']) ?>" required>
     <input type="date" name="date" value="<?= htmlspecialchars($utilisateur['date']) ?>" required>
     <p>Photo actuelle :</p>
     <img src="<?= htmlspecialchars($utilisateur['photo']) ?>" width="100"><br><br>

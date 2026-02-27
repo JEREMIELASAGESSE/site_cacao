@@ -41,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="text" name="user" placeholder="Utilisateur" required>
         <input type="password" name="password" placeholder="Mot de passe" required>
         <button type="submit">Se connecter</button>
+        <a href="tbequipes.php">Gestion des équipes</a>
     </form>
     <script>
         document.querySelector("form").addEventListener("submit", function(e) {

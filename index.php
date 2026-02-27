@@ -1,3 +1,8 @@
+<?php
+require 'config/config.php';
+
+$result = $pdo->query("SELECT * FROM annonces");
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -9,6 +14,33 @@
     <script src="assets/js/script.js"></script>
     <title>COOP-CA COOPAAHS</title>
 </head>
+<style>
+    :root {
+        --v-color: rgb(252, 251, 250);
+    }
+
+    #annonces {
+        padding: 10px;
+        border-radius: 5px;
+        margin: 0;
+        position: absolute;
+        top: 30px;
+    }
+
+    #annonces span {
+        margin: 0;
+        font-weight: bold;
+        font-size: 1.5em;
+        text-transform: uppercase;
+
+    }
+
+    #annonces p {
+        margin: 0;
+        font-size: 1.5em;
+        color: #ffffff;
+    }
+</style>
 
 <body>
     <?php include('menu.php'); ?>
@@ -20,9 +52,15 @@
             <br>
             <strong>(COOP-CA COOPAAHS)</strong>
         </h1>
+        <marquee id="annonces">
+            <?php while ($row = $result->fetch(PDO::FETCH_ASSOC)) { ?>
 
+                <p>
+                    <span><?php echo $row['title']; ?></span> : <?php echo $row['description']; ?>
+                </p>
+            <?php } ?>
+        </marquee>
     </div>
-
     <!-- <div class="home-page__background" id="font1">
         <img src="assets/images/image/foto.png" alt="Image de fond" class="home-page__image">
     </div> -->

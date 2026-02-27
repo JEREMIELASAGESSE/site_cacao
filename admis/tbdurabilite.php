@@ -5,7 +5,7 @@ require '../config/config.php';
 if (isset($_POST['ajouter'])) {
     $nom = $_POST['nom_durabilite'];
     $desc = $_POST['description'];
-    $stmt = $pdo->prepare("INSERT INTO Durabilite (nom_durabilite, description) VALUES (:nom, :desc)");
+    $stmt = $pdo->prepare("INSERT INTO urabilite (nom_durabilite, description) VALUES (:nom, :desc)");
     $stmt->execute(['nom' => $nom, 'desc' => $desc]);
 }
 
@@ -14,19 +14,19 @@ if (isset($_POST['modifier'])) {
     $id = $_POST['id'];
     $nom = $_POST['nom_durabilite'];
     $desc = $_POST['description'];
-    $stmt = $pdo->prepare("UPDATE Durabilite SET nom_durabilite = :nom, description = :desc WHERE id_durabilite = :id");
+    $stmt = $pdo->prepare("UPDATE Durabilite SET nom_durabilite = :nom, description = :desc WHERE id = :id");
     $stmt->execute(['nom' => $nom, 'desc' => $desc, 'id' => $id]);
 }
 
 // Supprimer une durabilité
 if (isset($_GET['supprimer'])) {
     $id = $_GET['supprimer'];
-    $stmt = $pdo->prepare("DELETE FROM Durabilite WHERE id_durabilite = :id");
+    $stmt = $pdo->prepare("DELETE FROM durabilite WHERE id = :id");
     $stmt->execute(['id' => $id]);
 }
 
 // Afficher toutes les durabilités
-$stmt = $pdo->query("SELECT * FROM Durabilite");
+$stmt = $pdo->query("SELECT * FROM durabilite");
 $durabilites = $stmt->fetchAll();
 ?>
 
@@ -72,13 +72,13 @@ $durabilites = $stmt->fetchAll();
         <?php foreach ($durabilites as $d): ?>
             <tr>
                 <form method="post">
-                    <td><?= $d['id_durabilite'] ?></td>
+                    <td><?= $d['id'] ?></td>
                     <td><input type="text" name="nom_durabilite" value="<?= $d['nom_durabilite'] ?>"></td>
                     <td><textarea name="description"><?= $d['description'] ?></textarea></td>
                     <td>
-                        <input type="hidden" name="id" value="<?= $d['id_durabilite'] ?>">
+                        <input type="hidden" name="id" value="<?= $d['id'] ?>">
                         <button type="submit" name="modifier">🖉</button>
-                        <a href="?supprimer=<?= $d['id_durabilite'] ?>" onclick="return confirm('Supprimer ?')">🗑️</a>
+                        <a href="?supprimer=<?= $d['id'] ?>" onclick="return confirm('Supprimer ?')">🗑️</a>
                     </td>
                 </form>
             </tr>

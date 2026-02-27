@@ -128,9 +128,21 @@ htmlspecialchars($_SESSION['user'])
             </ul>
         </div>
         <div class="fonctionnalite">
-            <img src="../assets/images/image/durabilité.jpg" alt="Gestion de la durabilité">
+            <img src="../assets/images/icon/icon_durabilite.png" alt="Gestion de la durabilité">
             <ul>
                 <li><a href="cultiver.php">liste des producteur par zone et leur culture</a></li>
+            </ul>
+        </div>
+        <div class="fonctionnalite">
+            <img src="../assets/images/image/durabiliteimg.png" alt="Gestion de la durabilité">
+            <ul>
+                <li><a href="type_action.php">Gestion des types d'action</a></li>
+            </ul>
+        </div>
+        <div class="fonctionnalite">
+            <img src="../assets/images/image/durabiliteimg.png" alt="Gestion de la durabilité">
+            <ul>
+                <li><a href="annonces.php">Gestion des Annonces</a></li>
             </ul>
         </div>
     </div>

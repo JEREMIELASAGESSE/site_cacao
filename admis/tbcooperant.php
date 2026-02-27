@@ -6,19 +6,19 @@ if (isset($_POST['ajouter'])) {
     $nom = $_POST['nom_producteur'];
     $contact = $_POST['contact'];
     $zone = $_POST['id_zone'];
-    $stmt = $pdo->prepare("INSERT INTO Producteur (nom_producteur, contact, id_zone) VALUES (:nom, :contact, :zone)");
+    $stmt = $pdo->prepare("INSERT INTO producteur (nom_producteur, contact, id_zone) VALUES (:nom, :contact, :zone)");
     $stmt->execute(['nom' => $nom, 'contact' => $contact, 'zone' => $zone]);
 }
 
 // Supprimer un producteur
 if (isset($_GET['supprimer'])) {
     $id = $_GET['supprimer'];
-    $stmt = $pdo->prepare("DELETE FROM Producteur WHERE id_producteur = :id");
+    $stmt = $pdo->prepare("DELETE FROM producteur WHERE id_producteur = :id");
     $stmt->execute(['id' => $id]);
 }
 
 // Afficher les producteurs
-$stmt = $pdo->query("SELECT pr.*, z.nom_zone FROM Producteur pr JOIN Zone z ON pr.id_zone = z.id_zone");
+$stmt = $pdo->query("SELECT pr.*, z.nom_zone FROM producteur pr JOIN zone z ON pr.id_zone = z.id_zone");
 $producteurs = $stmt->fetchAll();
 ?>
 
@@ -51,7 +51,7 @@ $producteurs = $stmt->fetchAll();
             <input type="text" name="contact" placeholder="Contact">
             <select name="id_zone" required>
                 <?php
-                $zones = $pdo->query("SELECT * FROM Zone")->fetchAll();
+                $zones = $pdo->query("SELECT * FROM zone")->fetchAll();
                 foreach ($zones as $z) {
                     echo "<option value='{$z['id_zone']}' class='zone-option'>{$z['nom_zone']}</option>";
                 }

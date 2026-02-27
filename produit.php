@@ -46,13 +46,13 @@ $produits = $pdo->query("SELECT * FROM produits")->fetchAll();
     <!-- <img src="" alt="Image de fond" class="home-page__image" class="produit-image"> -->
   </div>
   <section class="propos-page">
+
     <?php foreach ($produits as $produit): ?>
       <div class="equipes">
         <div class="cart-produit">
           <img src="admis/uploads/<?= htmlspecialchars($produit['photo']) ?>" alt="<?= htmlspecialchars($produit['nom_produit']) ?>" class="produit-image">
           <div class="produit-details">
             <h2><?= htmlspecialchars($produit['nom_produit']) ?></h2>
-            <p><?= htmlspecialchars($produit['description']) ?></p>
           </div>
         </div>
       </div>

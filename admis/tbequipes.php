@@ -1,15 +1,7 @@
 <?php
 require("../config/config.php");
-try {
-    $pdo = new PDO("mysql:host=localhost;dbname=cacao;charset=utf8", "root", "");
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // Requête pour récupérer les utilisateurs
-    $stmt = $pdo->query("SELECT * FROM utilisateur ORDER BY id DESC");
-    $utilisateurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    die("Erreur de connexion : " . $e->getMessage());
-}
+$stmt = $pdo->query("SELECT * FROM utilisateur ORDER BY id DESC");
+$utilisateurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -166,12 +158,12 @@ try {
 
                 <?php foreach ($utilisateurs as $u): ?>
                     <tr>
-                        <td><?= htmlspecialchars($u['nom_U']) ?></td>
-                        <td><?= htmlspecialchars($u['prenom_U']) ?></td>
+                        <td><?= htmlspecialchars($u['nom_u']) ?></td>
+                        <td><?= htmlspecialchars($u['prenom_u']) ?></td>
                         <td><?= htmlspecialchars($u['user']) ?></td>
                         <td><?= htmlspecialchars($u['password']) ?></td>
-                        <td><?= htmlspecialchars($u['contact_U']) ?></td>
-                        <td><?= htmlspecialchars($u['Adresse_U']) ?></td>
+                        <td><?= htmlspecialchars($u['contact_u']) ?></td>
+                        <td><?= htmlspecialchars($u['adresse_u']) ?></td>
                         <td><?= htmlspecialchars($u['date']) ?></td>
                         <td><img src="<?= htmlspecialchars($u['photo']) ?>" alt="Photo"></td>
                         <td><a class="btn modifier" href="modifiequipes.php?id=<?= $u['id'] ?>">Modifier</a></td>
